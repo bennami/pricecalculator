@@ -12,20 +12,19 @@
 <body>
     <?php require 'includes/header.php'?>
     <section>
-        <h4>Hello <?php echo $user->getName()?>,</h4>
-        <label for="exampleFormControlSelect2">Example multiple select</label>
-        <select multiple class="form-control" id="exampleFormControlSelect2">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
+        <h4>Hello <?php //echo $client->getName()?>,</h4>
+        <form method="post">
+        <label for="exampleFormControlSelect2">Our Customers</label>
+        <select multiple class="form-control" name="customerName" id="exampleFormControlSelect2">
+            <?php echo get_customer(); ?>
         </select>
 
-        <label for="exampleFormControlSelect2">Products</label>
-        <select multiple class="form-control" id="exampleFormControlSelect2">
+        <label for="exampleFormControlSelect2">Our Products</label>
+        <select multiple class="form-control" name="productName" id="exampleFormControlSelect2">
             <?php echo get_names(); ?>
         </select>
+            <input class="btn btn-primary" type="submit" name="submit" value="Submit">
+        </form>
     </section>
     <?php require 'includes/footer.php'?>
 
