@@ -4,7 +4,7 @@ declare(strict_types = 1);
 if (isset($_POST['submit'])) {
 
     if ($_POST['customerName']) {
-        $client = new Customer($_POST['customerName']);
+        $client = new customer($_POST['customerName']);
         var_dump($client);
     }
     if ($_POST['productName']) {
@@ -19,10 +19,12 @@ function get_customer() {
     $customer_array = json_decode($customer_json);
 
     for ($i = 0; $i < count($customer_array); $i++) {
+
         $list_itemII = "<option>" . ucwords(strtolower($customer_array[$i]->name)). "</option>";
         array_push($list_arrayII, $list_itemII);
     }
     return implode('<br>', $list_arrayII);
+
 }
 get_customer();
 
@@ -39,6 +41,8 @@ function get_names() {
     return implode('<br>', $list_array);
 }
 get_names();
+
+
 
 class HomepageController
 {
