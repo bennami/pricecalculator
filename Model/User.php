@@ -6,9 +6,9 @@ ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
 // getting all json files
-$customer_json = file_get_contents('../JSON/customers.json');
-$groups_json = file_get_contents('../JSON/groups.json');
-$products_json = file_get_contents('../JSON/products.json');
+$customer_json = file_get_contents('JSON/customers.json');
+$groups_json = file_get_contents('JSON/groups.json');
+$products_json = file_get_contents('JSON/products.json');
 
 //decoding json files into arrays
 $customer_array = json_decode($customer_json, true);
