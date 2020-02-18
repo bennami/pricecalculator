@@ -62,7 +62,7 @@ function createCustomerObject(){
     $allCustomers =  array();
 
     foreach ($Customers_array as $customers) {
-        array_push($allCustomers,$customers['name'] = new Customer ($customers['name'], $customers['id'], $customers['description'], $customers['price']));
+        array_push($allCustomers, $customers['name'] = new Customer ($customers['name'], $customers['id'], $customers['group_id']));
     }
     return $allCustomers;
 }
@@ -74,11 +74,11 @@ function createGroupObject(){
     $allGroups =  array();
 
     foreach ($Groups_array as $groups) {
-        array_push($allGroups, $groups['name']  = new Group ($groups['name'], $groups['id'], $groups['description'], $groups['price']));
+        array_push($allGroups, $groups['name']  = new Group ($groups['id'], $groups['name'], $groups['variable_discount'], $groups['group_id']));
     }
     return $allGroups;
 }
-
+var_dump(createCustomerObject(),createGroupObject(),createProductsObject());
 
 class HomepageController
 {
