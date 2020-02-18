@@ -16,7 +16,7 @@ class HomepageController
     public function createProductsList($allProducts){
         $list_array = array();
         for($i=0; $i< count($allProducts); $i++){
-            $list_item = "<option>" . ucfirst(strtolower($allProducts[$i]->getName())). "</option>";
+            $list_item = "<option value =".$allProducts[$i]->getId().">" . ucfirst(strtolower($allProducts[$i]->getName())). "</option>";
             array_push($list_array, $list_item );
         }
 
