@@ -16,18 +16,15 @@
         <form method="post">
         <label for="exampleFormControlSelect2">Our Customers</label>
         <select multiple class="form-control" name="customerName" id="exampleFormControlSelect2">
-            <?php echo createCustomerObject(); ?>
+            <?php echo $this->createCustomerObject($this->customers); ?>
         </select>
 
         <label for="exampleFormControlSelect2">Our Products</label>
         <select multiple class="form-control" name="productName" id="exampleFormControlSelect2">
-            <?php echo createProductsObject(); ?>
+            <?php echo $this->createProductsList($this->products); ?>
         </select>
 
-            <label for="exampleFormControlSelect2">groups</label>
-            <select multiple class="form-control" name="Group" id="exampleFormControlSelect2">
-                <?php echo createGroupObject(); ?>
-            </select>
+
             <input class="btn btn-primary" type="submit" name="submit" value="Submit">
         </form>
     </section>

@@ -17,7 +17,6 @@ class Products
     }
 
     public function getName():string{
-
        return $this->name;
     }
 
