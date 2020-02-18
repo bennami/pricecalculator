@@ -4,29 +4,16 @@ declare(strict_types = 1);
 if (isset($_POST['submit'])) {
 
     if ($_POST['customerName']) {
-        $client = new customer($_POST['customerName']);
-        var_dump($client);
+
+        var_dump($_POST['customerName']);
     }
     if ($_POST['productName']) {
-        var_dump($_POST['productName']);
+       var_dump($_POST['productName']);
+    }
+    if ($_POST['Group']) {
+        var_dump($_POST['Group']);
     }
 }
-
-// getting customers name and displaying them into an array
-function get_customer() {
-    $list_arrayII = array();
-    $customer_json = file_get_contents('JSON/customers.json');
-    $customer_array = json_decode($customer_json);
-
-    for ($i = 0; $i < count($customer_array); $i++) {
-
-        $list_itemII = "<option>" . ucwords(strtolower($customer_array[$i]->name)). "</option>";
-        array_push($list_arrayII, $list_itemII);
-    }
-    return implode('<br>', $list_arrayII);
-
-}
-get_customer();
 
 // creates products objects and displaying name in list
 function createProductsObject(){
@@ -48,7 +35,7 @@ function createProductsObject(){
     return implode('<br>', $list_array);
 }
 
-var_dump(createProductsObject());
+//var_dump(createProductsObject());
 
 function createCustomerObject(){
 
@@ -59,7 +46,15 @@ function createCustomerObject(){
     foreach ($Customers_array as $customers) {
         array_push($allCustomers, $customers['name'] = new Customer ($customers['name'], $customers['id'], $customers['group_id']));
     }
-    return $allCustomers;
+
+    $list_array = array();
+    for($i=0; $i< count($allCustomers); $i++){
+        $list_item = "<option>" . ucfirst(strtolower($allCustomers[$i]->getName())). "</option>";
+        array_push($list_array, $list_item );
+    }
+
+    return implode('<br>', $list_array);
+
 }
 
 function createGroupObject(){
@@ -71,9 +66,15 @@ function createGroupObject(){
     foreach ($Groups_array as $groups) {
         array_push($allGroups, $groups['name']  = new Group ($groups['id'], $groups['name'], $groups['variable_discount'], $groups['group_id']));
     }
-    return $allGroups;
+    $list_array = array();
+    for($i=0; $i< count($allGroups); $i++){
+        $list_item = "<option>" . ucfirst(strtolower($allGroups[$i]->getName())). "</option>";
+        array_push($list_array, $list_item );
+    }
+
+    return implode('<br>', $list_array);
 }
-var_dump(createCustomerObject(),createGroupObject(),createProductsObject());
+//var_dump(createCustomerObject(),createGroupObject(),createProductsObject());
 
 class HomepageController
 {

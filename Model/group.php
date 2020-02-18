@@ -21,5 +21,8 @@ class Group
         $this->variable_discount = $variable_discount;
         $this->group_id = $group_id;
     }
-
+    public function getName() : string
+    {
+        return $this->name;
+    }
 }
