@@ -56,8 +56,6 @@ function createObject(){
 }
 var_dump(createObject());
 
-
-
 class HomepageController
 {
     //render function with both $_GET and $_POST vars available if it would be needed.
