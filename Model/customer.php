@@ -9,6 +9,8 @@ error_reporting(E_ALL);
 class Customer
 {
     private $name;
+    private $id;
+    private $groupId;
 
     public function __construct(string $name)
     {
@@ -20,4 +22,5 @@ class Customer
         return $this->name;
     }
 }
+
 

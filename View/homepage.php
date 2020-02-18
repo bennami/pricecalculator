@@ -21,7 +21,7 @@
 
         <label for="exampleFormControlSelect2">Our Products</label>
         <select multiple class="form-control" name="productName" id="exampleFormControlSelect2">
-            <?php echo get_names(); ?>
+            <?php echo getProductNames(); ?>
         </select>
             <input class="btn btn-primary" type="submit" name="submit" value="Submit">
         </form>

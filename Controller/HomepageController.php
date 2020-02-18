@@ -29,7 +29,8 @@ function get_customer() {
 get_customer();
 
 // getting products name and displaying them into an array
-function get_names() {
+
+function getProductNames() {
     $list_array = array();
     $products_json = file_get_contents('JSON/products.json');
     $products_array = json_decode($products_json);
@@ -40,7 +41,20 @@ function get_names() {
     }
     return implode('<br>', $list_array);
 }
-get_names();
+getProductNames();
+
+function createObject(){
+
+    $products_json = file_get_contents('JSON/products.json');
+    $products_array = json_decode($products_json,true);
+    $allProducts =  array();
+
+    foreach ($products_array as $products) {
+     array_push($allProducts, new Products ($products['name'], $products['id'], $products['description'], $products['price']));
+    }
+   return $allProducts;
+}
+var_dump(createObject());
 
 
 
@@ -59,4 +73,3 @@ class HomepageController
         require 'View/homepage.php';
     }
 }
-
