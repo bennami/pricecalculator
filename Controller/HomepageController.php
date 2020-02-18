@@ -56,12 +56,12 @@ function createCustomerObject(){
     return implode('<br>', $list_array);
 
 }
-$allGroups =  array();
+
 function createGroupObject(){
 
     $Groups_json = file_get_contents('JSON/groups.json');
     $Groups_array = json_decode($Groups_json,true);
-
+    $allGroups =  array();
 
     foreach ($Groups_array as $groups) {
         array_push($allGroups, $groups['name']  = new Group ($groups['id'], $groups['name'], $groups['variable_discount'], $groups['group_id']));
@@ -74,7 +74,7 @@ function createGroupObject(){
 
     return implode('<br>', $list_array);
 }
-var_dump($allGroups);
+//var_dump(createCustomerObject(),createGroupObject(),createProductsObject());
 
 class HomepageController
 {
