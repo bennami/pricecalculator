@@ -1,5 +1,5 @@
 <?php
-declare(strict_types = 1);
+declare(strict_types=1);
 
 ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
@@ -12,14 +12,14 @@ class Customer
     private $id;
     private $groupId;
 
-    public function __construct( $name, $id, $groupId)
+    public function __construct($name, $id, $groupId)
     {
         $this->name = $name;
         $this->id = $id;
         $this->groupId = $groupId;
     }
 
-    public function getName() : string
+    public function getName(): string
     {
         return $this->name;
     }
