@@ -3,10 +3,10 @@
 
 class Products
 {
-    public $name;
-    public $id;
-    public $description;
-    public $price;
+    private $name;
+    private $id;
+    private $description;
+    private $price;
 
 // every time an object is created, we pass the info we get from the user
     public function __construct($name, $id, $description, $price ) {

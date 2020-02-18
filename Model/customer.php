@@ -12,9 +12,11 @@ class Customer
     private $id;
     private $groupId;
 
-    public function __construct(string $name)
+    public function __construct(string $name, $id, $groupId)
     {
         $this->name = $name;
+        $this->id = $id;
+        $this->groupId = $groupId;
     }
 
     public function getName() : string
