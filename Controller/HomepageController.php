@@ -28,21 +28,7 @@ function get_customer() {
 }
 get_customer();
 
-// getting products name and displaying them into an array
-
-function getProductNames() {
-    $list_array = array();
-    $products_json = file_get_contents('JSON/products.json');
-    $products_array = json_decode($products_json);
-
-    for ($i = 0; $i < count($products_array); $i++) {
-        $list_item = "<option>" . ucfirst(strtolower($products_array[$i]->name)). "</option>";
-        array_push($list_array, $list_item);
-    }
-    return implode('<br>', $list_array);
-}
-getProductNames();
-
+// creates products objects and displaying name in list
 function createProductsObject(){
 
     $products_json = file_get_contents('JSON/products.json');
@@ -52,8 +38,17 @@ function createProductsObject(){
     foreach ($products_array as $products) {
      array_push($allProducts, $products['name'] = new Products ($products['name'], $products['id'], $products['description'], $products['price']));
     }
-   return $allProducts;
+
+    $list_array = array();
+    for($i=0; $i< count($allProducts); $i++){
+        $list_item = "<option>" . ucfirst(strtolower($allProducts[$i]->getName())). "</option>";
+         array_push($list_array, $list_item );
+    }
+
+    return implode('<br>', $list_array);
 }
+
+var_dump(createProductsObject());
 
 function createCustomerObject(){
 
