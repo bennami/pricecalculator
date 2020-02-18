@@ -43,18 +43,42 @@ function getProductNames() {
 }
 getProductNames();
 
-function createObject(){
+function createProductsObject(){
 
     $products_json = file_get_contents('JSON/products.json');
     $products_array = json_decode($products_json,true);
     $allProducts =  array();
 
     foreach ($products_array as $products) {
-     array_push($allProducts, new Products ($products['name'], $products['id'], $products['description'], $products['price']));
+     array_push($allProducts, $products['name'] = new Products ($products['name'], $products['id'], $products['description'], $products['price']));
     }
    return $allProducts;
 }
-var_dump(createObject());
+
+function createCustomerObject(){
+
+    $Customers_json = file_get_contents('JSON/customers.json');
+    $Customers_array = json_decode($Customers_json,true);
+    $allCustomers =  array();
+
+    foreach ($Customers_array as $customers) {
+        array_push($allCustomers,$customers['name'] = new Customer ($customers['name'], $customers['id'], $customers['description'], $customers['price']));
+    }
+    return $allCustomers;
+}
+
+function createGroupObject(){
+
+    $Groups_json = file_get_contents('JSON/groups.json');
+    $Groups_array = json_decode($Groups_json,true);
+    $allGroups =  array();
+
+    foreach ($Groups_array as $groups) {
+        array_push($allGroups, $groups['name']  = new Group ($groups['name'], $groups['id'], $groups['description'], $groups['price']));
+    }
+    return $allGroups;
+}
+
 
 class HomepageController
 {
