@@ -67,23 +67,10 @@ class HomepageController
     //render function with both $_GET and $_POST vars available if it would be needed.
     public function render(array $GET, array $POST)
     {
-        /* if (isset($_POST['submit'])) {
 
-             if ($_POST['customerName']) {
-
-
-             }
+        
 
 
-             if ($_POST['productName']) {
-                 foreach ($_SESSION ['products'] as $product) {
-                     if ($product->getName() == $_POST['customerName']) {
-                         echo $product;
-                     }
-                 }
-
-             }
-         }*/
         //you should not echo anything inside your controller - only assign vars here
         // then the view will actually display them.
 
