@@ -8,10 +8,12 @@ require 'Model/group.php';
 
 //include all your controllers here
 require 'Controller/HomepageController.php';
+//save products, customers and groups in session
 session_start();
 if (!isset($_SESSION)) {
     $controller::$products[] = $_SESSION['products'];
     $controller::$customers[] = $_SESSION['customers'];
+    $controller::$customers[] = $_SESSION['groups'] ;
 }
 
 

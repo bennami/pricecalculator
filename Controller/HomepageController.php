@@ -30,6 +30,7 @@ class HomepageController
         $allGroups =  array();
 
         foreach ($Groups_array as $group) {
+            //if value of these properties is null,  change it to a 0 or a string
             if (empty($group['variable_discount']) == true){
                 $group['variable_discount'] = 0;
             }elseif (empty($group['fixed_discount']) == true){
@@ -38,19 +39,15 @@ class HomepageController
             if (empty($group['group_id']) == true){
                 $group['group_id'] = 'no';
             }
+
+            //create array of group class objects
             array_push($allGroups, $group['name']  = new Group ($group['id'], $group['name'], $group['variable_discount'], $group['fixed_discount'], $group['group_id']));
         }
-
-
-        var_dump($allGroups);
-
-//save products, customers and groups in session
-
-//$_SESSION['groups'] = $allGroups;
+        //var_dump($allGroups);
     }
 
 // creates list to be displayed in the drop down menu, using previous function as parameter
-    public function createProductsList($allProducts)
+public function createProductsList($allProducts)
     {
         $list_array = array();
         for ($i = 0; $i < count($allProducts); $i++) {
@@ -62,8 +59,7 @@ class HomepageController
     }
 
 //createProductsList($allProducts);
-
-    public function createCustomerObject($all)
+public function createCustomerObject($all)
     {
         $list_array = array();
         for ($i = 0; $i < count($all); $i++) {
