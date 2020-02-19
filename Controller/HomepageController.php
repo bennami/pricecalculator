@@ -58,7 +58,7 @@ class HomepageController
     {
         $list_array = array();
         for ($i = 0; $i < count($all); $i++) {
-            $list_item = "<option>" . ucfirst(strtolower($all[$i]->getName())) . "</option>";
+            $list_item = "<option>" . ucwords(strtolower($all[$i]->getName())) . "</option>";
             array_push($list_array, $list_item);
         }
         return implode('<br>', $list_array);
