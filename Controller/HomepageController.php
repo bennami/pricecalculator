@@ -24,14 +24,15 @@ class HomepageController
             array_push($this->customers, $customer['name'] = new Customer ($customer['name'], $customer['id'], $customer['group_id']));
         }
 
-        /*//create json Groups
+        //create json Groups
         $Groups_json = file_get_contents('JSON/groups.json');
         $Groups_array = json_decode($Groups_json,true);
         $allGroups =  array();
 
         foreach ($Groups_array as $group) {
-            array_push($allGroups, $group['name']  = new Group ($group['id'], $group['name'], $group['variable_discount'], $group['group_id']));
-        }*/
+            array_push($allGroups, $group['name']  = new Group ($group['id'], $group['name'], $group['variable_discount'], $group['fixed_discount'], $group['group_id']));
+        }
+        var_dump($allGroups);
 
 //save products, customers and groups in session
 
