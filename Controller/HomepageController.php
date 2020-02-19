@@ -6,10 +6,8 @@ class HomepageController
     public $customers = array();
     public $products = array();
 
-    public function __construct()
-    {
+    public function __construct(){
         //create json  and objects products
-
         $products_json = file_get_contents('JSON/products.json');
         $products_array = json_decode($products_json, true);
 
@@ -58,7 +56,7 @@ class HomepageController
     {
         $list_array = array();
         for ($i = 0; $i < count($all); $i++) {
-            $list_item = "<option>" . ucwords(strtolower($all[$i]->getName())) . "</option>";
+            $list_item = "<option >" . ucwords(strtolower($all[$i]->getName())) . "</option>";
             array_push($list_array, $list_item);
         }
         return implode('<br>', $list_array);
@@ -67,10 +65,21 @@ class HomepageController
     //render function with both $_GET and $_POST vars available if it would be needed.
     public function render(array $GET, array $POST)
     {
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+        if (isset($_POST)) {
+           echo $customer_selected = $_POST ['customerName'];
 
-        
+           foreach ($this->customers as $customer){
 
+               if($customer_selected == $customer->getName()){
+                   var_dump( $customer);
+               }
+           }
 
+        }else{
+            $_POST["customerName"] =$_POST ["customerName"] =0;
+        }
+        }
         //you should not echo anything inside your controller - only assign vars here
         // then the view will actually display them.
 
@@ -78,3 +87,14 @@ class HomepageController
         require 'View/homepage.php';
     }
 }
+function whatIsHappening() {
+    echo '<h2>$_GET</h2>';
+    var_dump($_GET);
+    echo '<h2>$_POST</h2>';
+    var_dump($_POST);
+    echo '<h2>$_COOKIE</h2>';
+    var_dump($_COOKIE);
+    echo '<h2>$_SESSION</h2>';
+    var_dump($_SESSION);
+}
+//whatIsHappening();
