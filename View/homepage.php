@@ -30,6 +30,9 @@
         <input class="btn btn-primary" type="submit" name="submit" value="Submit">
     </form>
 </section>
+<section>
+    <p> <?php echo $foundhim ?></p>
+</section>
 <?php require 'includes/footer.php' ?>
 
 

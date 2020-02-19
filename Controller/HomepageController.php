@@ -3,8 +3,9 @@
 
 class HomepageController
 {
-    public $customers = array();
-    public $products = array();
+    private $customers = array();
+    private $products = array();
+    private $groups = array();
 
     public function __construct(){
         //create json  and objects products
@@ -70,36 +71,46 @@ public function createCustomerObject($all)
         return implode('<br>', $list_array);
     }
 
-    //render function with both $_GET and $_POST vars available if it would be needed.
-    public function render(array $GET, array $POST)
+    public function getChosenOne($customer_selected)
     {
+        foreach ($this->customers as $chosenOne) {
+
+            if ($customer_selected == $chosenOne->getName()) {
+                //group Id
+                return $chosenOne;
+            }
+        }
+    }
+
+//render function with both $_GET and $_POST vars available if it would be needed.
+public function render(array $GET, array $POST)
+    {
+
         if($_SERVER["REQUEST_METHOD"] == "POST"){
         if (isset($_POST)) {
-           echo $customer_selected = $_POST ['customerName'];
-           echo $product_selected = $_POST ['productName'];
+           $customer_selected = $_POST ['customerName'];
 
-           foreach ($this->customers as $customer) {
+           //this is the id of the product
+           $product_selected = $_POST ['productName'];
 
-               if ($customer_selected == $customer->getName()) {
-                   var_dump($customer);
+           $foundhim = $this->getChosenOne($customer_selected);
+
+           foreach($this->products as $chosenProduct){
+
+               if($product_selected == $chosenProduct->getId()){
+                   $chosenProduct;
                }
-           }
-           foreach($this->products as $product){
-
-               if($product_selected == $product->getId()){
-                   var_dump($product);
-                   }
            }
 
         }else{
-            $_POST["customerName"] =$_POST ["customerName"] =0;
-            $_POST["productName"] =$_POST ["productName"] =0;
+            $_POST["customerName"] =$_POST ["customerName"] = 0;
+            $_POST["productName"] =$_POST ["productName"] = 0;
         }
 
         }
         //you should not echo anything inside your controller - only assign vars here
         // then the view will actually display them.
-
+var_dump($this->products);
         //load the view
         require 'View/homepage.php';
     }

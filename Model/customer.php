@@ -23,6 +23,16 @@ class Customer
     {
         return $this->name;
     }
+
+    public function getId(){
+        return  $this->id;
+    }
+
+    public function getGroupId(){
+       return $this->groupId;
+    }
+
+
 }
 
 

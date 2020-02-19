@@ -34,17 +34,10 @@ class Group
     }
     public function getVariableDiscount()
     {
-        if ($this->variable_discount == null) {
-            $this->variable_discount = 0;
-        }
         return $this->variable_discount;
-
     }
-    public function fixedDiscount()
+    public function getFixedDiscount()
     {
-        if ($this->fixed_discount == null) {
-            $this->fixed_discount = 0;
-        }
         return $this->fixed_discount;
     }
 
