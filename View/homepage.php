@@ -24,6 +24,7 @@
         <select multiple class="form-control" name="productName" id="exampleFormControlSelect2">
             <?php echo $this->createProductsList($this->products); ?>
         </select>
+        <div name="description">Product description: </div>
 
 
         <input class="btn btn-primary" type="submit" name="submit" value="Submit">

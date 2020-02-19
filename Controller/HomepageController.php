@@ -68,17 +68,26 @@ class HomepageController
         if($_SERVER["REQUEST_METHOD"] == "POST"){
         if (isset($_POST)) {
            echo $customer_selected = $_POST ['customerName'];
+           echo $product_selected = $_POST ['productName'];
 
-           foreach ($this->customers as $customer){
+           foreach ($this->customers as $customer) {
 
-               if($customer_selected == $customer->getName()){
-                   var_dump( $customer);
+               if ($customer_selected == $customer->getName()) {
+                   var_dump($customer);
                }
+           }
+           foreach($this->products as $product){
+
+               if($product_selected == $product->getId()){
+                   var_dump($product);
+                   }
            }
 
         }else{
             $_POST["customerName"] =$_POST ["customerName"] =0;
+            $_POST["productName"] =$_POST ["productName"] =0;
         }
+
         }
         //you should not echo anything inside your controller - only assign vars here
         // then the view will actually display them.
