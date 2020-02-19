@@ -30,8 +30,15 @@ class HomepageController
         $allGroups =  array();
 
         foreach ($Groups_array as $group) {
+            if (empty($group['variable_discount']) == true){
+                $group['variable_discount'] = 0;
+            }elseif (empty($group['fixed_discount']) == true){
+                $group['fixed_discount'] = 0;
+            }
             array_push($allGroups, $group['name']  = new Group ($group['id'], $group['name'], $group['variable_discount'], $group['fixed_discount'], $group['group_id']));
         }
+
+
         var_dump($allGroups);
 
 //save products, customers and groups in session

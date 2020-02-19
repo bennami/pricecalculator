@@ -32,21 +32,22 @@ class Group
     {
         return $this->name;
     }
-    public function getVariableDiscount() : int
+    public function getVariableDiscount()
     {
-        if ($this->variable_discount = null) {
+        if ($this->variable_discount == null) {
             $this->variable_discount = 0;
         }
         return $this->variable_discount;
 
     }
-    public function fixedDiscount() : int
+    public function fixedDiscount()
     {
-        if ($this->fixed_discount = null) {
+        if ($this->fixed_discount == null) {
             $this->fixed_discount = 0;
         }
         return $this->fixed_discount;
     }
+
     public function getGroupId() : string
     {
         return $this->group_id;
