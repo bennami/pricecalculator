@@ -31,19 +31,20 @@ class HomepageController
 
         foreach ($Groups_array as $group) {
             //if value of these properties is null,  change it to a 0 or a string
-            if (empty($group['variable_discount']) == true){
+            if (empty($group['variable_discount'])){
                 $group['variable_discount'] = 0;
-            }elseif (empty($group['fixed_discount']) == true){
+            }
+            if (empty($group['fixed_discount'])){
                 $group['fixed_discount'] = 0;
             }
-            if (empty($group['group_id']) == true){
+            if (empty($group['group_id'])){
                 $group['group_id'] = 'no';
             }
 
             //create array of group class objects
             array_push($allGroups, $group['name']  = new Group ($group['id'], $group['name'], $group['variable_discount'], $group['fixed_discount'], $group['group_id']));
         }
-        //var_dump($allGroups);
+        var_dump($allGroups);
     }
 
 // creates list to be displayed in the drop down menu, using previous function as parameter
