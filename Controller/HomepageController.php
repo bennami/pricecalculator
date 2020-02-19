@@ -35,6 +35,9 @@ class HomepageController
             }elseif (empty($group['fixed_discount']) == true){
                 $group['fixed_discount'] = 0;
             }
+            if (empty($group['group_id']) == true){
+                $group['group_id'] = 'no';
+            }
             array_push($allGroups, $group['name']  = new Group ($group['id'], $group['name'], $group['variable_discount'], $group['fixed_discount'], $group['group_id']));
         }
 
