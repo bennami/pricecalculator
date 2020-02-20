@@ -202,6 +202,8 @@ public function render()
                 echo '<br>'.'Total to pay with discounts :'. $totalWithFixedDiscount . ' &#8364'. '<br>';
             }
 
+            $price_discounts = $totalWithFixedDiscount * ((100-$largestVariableDiscount) / 100);
+            echo '<br>' . 'Price with both discounts is ' . round($price_discounts, 2) . ' &#8364';
 
 
 
