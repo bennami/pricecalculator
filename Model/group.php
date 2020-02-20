@@ -46,13 +46,7 @@ class Group
     {
         return $this->group_id;
     }
-/*public function getNestedGroups($id, $GroupId){
-        if($this->getId() == $this->getGroupId()){
 
-            array_push($this->nested_groups, $group)
-        }
-
-}*/
 
 
 }

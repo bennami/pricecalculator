@@ -97,6 +97,8 @@ class HomepageController
     }
 
 
+
+
 //render function with both $_GET and $_POST vars available if it would be needed.
 public function render()
     {
@@ -121,29 +123,53 @@ public function render()
                }
            }
 
+           //this is where all chosen groups go
+           $allChosenGroups=[];
+
             //get group that belongs to customer
             foreach ($this->groups as $group){
                 if($foundHim->getGroupId() == $group->getId()){
                     $chosenGroup = $group;
-                    var_dump($chosenGroup);
+                   // var_dump($chosenGroup);
+                    array_push($allChosenGroups,$chosenGroup);
+                   $chosenGroup->getVariableDiscount();
+                   $chosenGroup->getFixedDiscount();
                 }
             }
 
+            //get group that belongs  to chosen group, this does not always exist
             foreach ($this->groups as $group){
                 if($chosenGroup->getGroupId()== $group->getId()){
                     $nestedGroup =$group;
-                    var_dump($nestedGroup);
+                  //  var_dump($nestedGroup);
+                    array_push($allChosenGroups,$nestedGroup);
+                    $nestedGroup->getVariableDiscount();
+                    $nestedGroup->getFixedDiscount();
                 }
             }
 
+            //get company group
             foreach ($this->groups as $group){
              if($nestedGroup->getGroupId() == $group->getId()){
 
                  $superNestedGroup = $group;
-                 var_dump($superNestedGroup);
+                // var_dump($superNestedGroup);
+                 array_push($allChosenGroups,$superNestedGroup);
+
              }
             }
-           //get all groups that belong to group
+
+
+            //get variable discounts and fixed discounts into corresponding arrays
+            $allVariableDiscounts=[];
+            $allFixedDiscounts =[];
+            foreach ($allChosenGroups as $group){
+                array_push($allVariableDiscounts, $group->getVariableDiscount() );
+                array_push($allFixedDiscounts, $group->getFixedDiscount());
+
+            }
+var_dump($allChosenGroups, $allVariableDiscounts, $allFixedDiscounts);
+            //calculation
 
 
 
