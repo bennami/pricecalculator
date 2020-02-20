@@ -168,8 +168,24 @@ public function render()
                 array_push($allFixedDiscounts, $group->getFixedDiscount());
 
             }
-var_dump($allChosenGroups, $allVariableDiscounts, $allFixedDiscounts);
-            //calculation
+            //var_dump($allChosenGroups, $allVariableDiscounts, $allFixedDiscounts);
+
+            //get highest value of variable discount array, this will be a percentage
+            $largestVariableDiscount= max($allVariableDiscounts);
+            $largestVariableDiscount;
+
+            //getting the sum of fixed discount array
+            $sumFixedDiscount = array_sum($allFixedDiscounts);
+            $productPrice =  0;
+            $productPrice= $this->getChosenProduct($product_selected)->getPrice() - $sumFixedDiscount;
+            echo $productPrice;
+
+
+
+
+
+
+
 
 
 
