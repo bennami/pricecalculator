@@ -31,11 +31,11 @@
     </form>
 </section>
 <section>
-    <p> <?php echo $this->getChosenOne($customer_selected)->getName(); ?></p>
-    <div name="description">Product name: <?php echo $this->getChosenProduct($product_selected)->getName(); ?> </div>
-    <div name="description">Product ID: <?php echo $this->getChosenProduct($product_selected)->getId(); ?> </div>
-    <div name="description">Product description: <?php echo $this->getChosenProduct($product_selected)->getDescription(); ?> </div>
-    <div name="price">Price: <?php echo $this->getChosenProduct($product_selected)->getPrice(); ?> </div>
+    <p> <?php if(isset($customer_selected)){echo $this->getChosenOne($customer_selected)->getName();}  ?></p>
+    <div name="description">Product name: <?php if(isset($product_selected)){ echo $this->getChosenProduct($product_selected)->getName();} ?> </div>
+    <div name="description">Product ID: <?php if(isset($product_selected)){  echo $this->getChosenProduct($product_selected)->getId();} ?> </div>
+    <div name="description">Product description: <?php if(isset($product_selected)){  echo $this->getChosenProduct($product_selected)->getDescription();} ?> </div>
+    <div name="price">Price: <?php if(isset($product_selected)){  echo  $this->getChosenProduct($product_selected)->getPrice();} ?> </div>
 </section>
 <?php require 'includes/footer.php' ?>
 
