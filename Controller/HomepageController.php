@@ -7,6 +7,7 @@ class HomepageController
     private $products = array();
     private $groups = array();
 
+
     public function __construct(){
         //create json  and objects products
         $products_json = file_get_contents('JSON/products.json');
@@ -21,7 +22,6 @@ class HomepageController
         $Customers_json = file_get_contents('JSON/customers.json');
         $Customers_array = json_decode($Customers_json, true);
 
-
         foreach ($Customers_array as $customer) {
             array_push($this->customers, $customer['name'] = new Customer ($customer['name'], $customer['id'], $customer['group_id']));
         }
@@ -29,7 +29,6 @@ class HomepageController
         //create json Groups
         $Groups_json = file_get_contents('JSON/groups.json');
         $Groups_array = json_decode($Groups_json,true);
-        $allGroups =  array();
 
         foreach ($Groups_array as $group) {
             //if value of these properties is null,  change it to a 0 or a string
@@ -39,18 +38,22 @@ class HomepageController
             if (empty($group['fixed_discount'])){
                 $group['fixed_discount'] = 0;
             }
-            if (empty($group['group_id'])){
+            if (!isset($group['group_id'])){
                 $group['group_id'] = 'no';
             }
 
             //create array of group class objects
-            array_push($allGroups, $group['name']  = new Group ($group['id'], $group['name'], $group['variable_discount'], $group['fixed_discount'], $group['group_id']));
+            array_push($this->groups, $group['name']  = new Group ($group['id'], $group['name'], $group['variable_discount'], $group['fixed_discount'], $group['group_id']));
         }
+<<<<<<< HEAD
         //var_dump($allGroups);
+=======
+        //var_dump($this->groups);
+>>>>>>> 758e263c5bedc4e98aafea7d46aa71d2db826d03
     }
 
-// creates list to be displayed in the drop down menu, using previous function as parameter
-public function createProductsList($allProducts)
+    // creates list to be displayed in the drop down menu, using previous function as parameter
+    public function createProductsList($allProducts)
     {
         $list_array = array();
         for ($i = 0; $i < count($allProducts); $i++) {
@@ -61,8 +64,8 @@ public function createProductsList($allProducts)
         return implode('<br>', $list_array);
     }
 
-//createProductsList($allProducts);
-public function createCustomerObject($all)
+    //createProductsList($allProducts);
+    public function createCustomerObject($all)
     {
         $list_array = array();
         for ($i = 0; $i < count($all); $i++) {
@@ -72,7 +75,7 @@ public function createCustomerObject($all)
         return implode('<br>', $list_array);
     }
 
-    public function getChosenOne($customer_selected)
+     public function getChosenOne($customer_selected)
     {
         foreach ($this->customers as $chosenOne) {
 
@@ -81,8 +84,10 @@ public function createCustomerObject($all)
                 return $chosenOne;
             }
         }
+
     }
 
+<<<<<<< HEAD
     public function getChosenProduct($product_selected)
     {
         foreach ($this->products as $chosenProduct) {
@@ -93,9 +98,12 @@ public function createCustomerObject($all)
         }
 
     }
+=======
+
+>>>>>>> 758e263c5bedc4e98aafea7d46aa71d2db826d03
 
 //render function with both $_GET and $_POST vars available if it would be needed.
-public function render(array $GET, array $POST)
+public function render()
     {
 
         if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -105,25 +113,63 @@ public function render(array $GET, array $POST)
            //this is the id of the product
            $product_selected = $_POST ['productName'];
 
-           $foundhim = $this->getChosenOne($customer_selected);
+            //chosen customer object
+            $foundHim = $this->getChosenOne($customer_selected);
+            var_dump($foundHim);
 
            foreach($this->products as $chosenProduct){
 
                if($product_selected == $chosenProduct->getId()){
+<<<<<<< HEAD
                    $chosenProduct;
                    var_dump($chosenProduct);
+=======
+                  //var_dump($chosenProduct);
+>>>>>>> 758e263c5bedc4e98aafea7d46aa71d2db826d03
                }
            }
+
+            //get group that belongs to customer
+            foreach ($this->groups as $group){
+                if($foundHim->getGroupId() == $group->getId()){
+                    $chosenGroup = $group;
+                    var_dump($chosenGroup);
+                }
+            }
+
+            foreach ($this->groups as $group){
+                if($chosenGroup->getGroupId()== $group->getId()){
+                    $nestedGroup =$group;
+                    var_dump($nestedGroup);
+                }
+            }
+
+            foreach ($this->groups as $group){
+             if($nestedGroup->getGroupId() == $group->getId()){
+
+                 $superNestedGroup = $group;
+                 var_dump($superNestedGroup);
+             }
+            }
+           //get all groups that belong to group
+
+
 
         }else{
             $_POST["customerName"] =$_POST ["customerName"] = 0;
             $_POST["productName"] =$_POST ["productName"] = 0;
-        }
+            }
 
         }
+
+        //var_dump($chosenProduct);
         //you should not echo anything inside your controller - only assign vars here
         // then the view will actually display them.
+<<<<<<< HEAD
 //var_dump($this->products);
+=======
+
+>>>>>>> 758e263c5bedc4e98aafea7d46aa71d2db826d03
         //load the view
         require 'View/homepage.php';
     }

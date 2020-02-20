@@ -36,7 +36,6 @@
     <div name="description">Product ID: <?php echo $this->getChosenProduct($product_selected)->getId(); ?> </div>
     <div name="description">Product description: <?php echo $this->getChosenProduct($product_selected)->getDescription(); ?> </div>
     <div name="price">Price: <?php echo $this->getChosenProduct($product_selected)->getPrice(); ?> </div>
-
 </section>
 <?php require 'includes/footer.php' ?>
 
