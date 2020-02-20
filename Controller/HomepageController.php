@@ -45,11 +45,9 @@ class HomepageController
             //create array of group class objects
             array_push($this->groups, $group['name']  = new Group ($group['id'], $group['name'], $group['variable_discount'], $group['fixed_discount'], $group['group_id']));
         }
-<<<<<<< HEAD
-        //var_dump($allGroups);
-=======
+
         //var_dump($this->groups);
->>>>>>> 758e263c5bedc4e98aafea7d46aa71d2db826d03
+
     }
 
     // creates list to be displayed in the drop down menu, using previous function as parameter
@@ -87,7 +85,6 @@ class HomepageController
 
     }
 
-<<<<<<< HEAD
     public function getChosenProduct($product_selected)
     {
         foreach ($this->products as $chosenProduct) {
@@ -98,9 +95,7 @@ class HomepageController
         }
 
     }
-=======
 
->>>>>>> 758e263c5bedc4e98aafea7d46aa71d2db826d03
 
 //render function with both $_GET and $_POST vars available if it would be needed.
 public function render()
@@ -120,12 +115,9 @@ public function render()
            foreach($this->products as $chosenProduct){
 
                if($product_selected == $chosenProduct->getId()){
-<<<<<<< HEAD
-                   $chosenProduct;
-                   var_dump($chosenProduct);
-=======
+
                   //var_dump($chosenProduct);
->>>>>>> 758e263c5bedc4e98aafea7d46aa71d2db826d03
+
                }
            }
 
@@ -165,11 +157,9 @@ public function render()
         //var_dump($chosenProduct);
         //you should not echo anything inside your controller - only assign vars here
         // then the view will actually display them.
-<<<<<<< HEAD
-//var_dump($this->products);
-=======
 
->>>>>>> 758e263c5bedc4e98aafea7d46aa71d2db826d03
+//var_dump($this->products);
+
         //load the view
         require 'View/homepage.php';
     }
