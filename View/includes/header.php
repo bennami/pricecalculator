@@ -1,3 +1,3 @@
 <header>
-    <h1>Welcome to my site</h1>
+    <h1>Price Calculator in PHP</h1>
 </header>

@@ -24,14 +24,19 @@
         <select multiple class="form-control" name="productName" id="exampleFormControlSelect2">
             <?php echo $this->createProductsList($this->products); ?>
         </select>
-        <div name="description">Product description: </div>
+
 
 
         <input class="btn btn-primary" type="submit" name="submit" value="Submit">
     </form>
 </section>
 <section>
-    <p> <?php echo $foundhim ?></p>
+    <p> <?php echo $this->getChosenOne($customer_selected)->getName(); ?></p>
+    <div name="description">Product name: <?php echo $this->getChosenProduct($product_selected)->getName(); ?> </div>
+    <div name="description">Product ID: <?php echo $this->getChosenProduct($product_selected)->getId(); ?> </div>
+    <div name="description">Product description: <?php echo $this->getChosenProduct($product_selected)->getDescription(); ?> </div>
+    <div name="price">Price: <?php echo $this->getChosenProduct($product_selected)->getPrice(); ?> </div>
+
 </section>
 <?php require 'includes/footer.php' ?>
 

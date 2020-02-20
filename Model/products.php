@@ -27,5 +27,24 @@ class Products
         return $this->id;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getDescription(): string
+    {
+        return $this->description;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+
+
+
 
 }
