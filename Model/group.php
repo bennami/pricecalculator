@@ -15,6 +15,7 @@ class Group
     private $variable_discount;
     private $fixed_discount;
     private $group_id;
+    private $nested_groups=[];
 
     public function __construct($id, $name, $variable_discount, $fixed_discount, $group_id ) {
         $this->id = $id;
@@ -45,6 +46,13 @@ class Group
     {
         return $this->group_id;
     }
+/*public function getNestedGroups($id, $GroupId){
+        if($this->getId() == $this->getGroupId()){
+
+            array_push($this->nested_groups, $group)
+        }
+
+}*/
 
 
 }

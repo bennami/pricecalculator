@@ -31,7 +31,8 @@
     </form>
 </section>
 <section>
-    <p> <?php echo $foundhim ?></p>
+    <p> <?php echo $foundhim; ?></p>
+
 </section>
 <?php require 'includes/footer.php' ?>
 
