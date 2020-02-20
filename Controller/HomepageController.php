@@ -159,7 +159,6 @@ public function render()
              }
             }
 
-
             //get variable discounts and fixed discounts into corresponding arrays
             $allVariableDiscounts=[];
             $allFixedDiscounts =[];
@@ -176,17 +175,32 @@ public function render()
 
             //getting the substraction of fixed discount array
             $sumFixedDiscount = array_sum($allFixedDiscounts);
-            $productPrice =  0;
-            $productPrice= $this->getChosenProduct($product_selected)->getPrice() - $sumFixedDiscount;
-            echo '<br>'.'fixed price discount is '. $sumFixedDiscount.'<br>';
-            echo $productPrice;
+            $totalWithFixedDiscount =  0;
 
+            // for fixed prices which are higher than the original price
+            if ($sumFixedDiscount > $this->getChosenProduct($product_selected)->getPrice()) {
+                echo '<br>' . $sumFixedDiscount . ' &#8364';
+                echo '<br>' .'Fixed price is higher than the original price. Fixed discount is not applicable';
+            } else {
+                $totalWithFixedDiscount= $this->getChosenProduct($product_selected)->getPrice() - $sumFixedDiscount;
+            echo '<br>'.'fixed price discount is '. $sumFixedDiscount. ' &#8364'. '<br>';
+            echo $totalWithFixedDiscount . ' &#8364';
+            }
             //discount with variable discount array
 
-            $newprice =  $this->getChosenProduct($product_selected)->getPrice() * ((100-$largestVariableDiscount) / 100);
+            $totalWithVariableDiscount =  $this->getChosenProduct($product_selected)->getPrice() * ((100-$largestVariableDiscount) / 100);
 
-            echo '<br>'.'variable discount is '.$largestVariableDiscount.'%';
-            echo '<br>'.round($newprice, 2);
+            echo '<br>'.'variable discount is '.$largestVariableDiscount.' %';
+            echo '<br>'.round($totalWithVariableDiscount, 2) . ' &#8364';
+
+            if ($totalWithFixedDiscount > $totalWithVariableDiscount) {
+                echo '<br>' . "It's recommended to give you a variable discount of $largestVariableDiscount %";
+                echo '<br>'.round($totalWithVariableDiscount, 2) . ' &#8364';
+            }
+            else {
+                echo '<br>' . "It's recommended to give you a fixed discount of $sumFixedDiscount . '&#8364'";
+                echo '<br>'.'Total to pay with discounts :'. $totalWithFixedDiscount . ' &#8364'. '<br>';
+            }
 
 
 
