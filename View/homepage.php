@@ -13,29 +13,38 @@
 <body>
 <?php require 'includes/header.php' ?>
 <section>
-    <h4>Hello <?php //echo $client->getName()?>,</h4>
     <form method="post">
-        <label for="exampleFormControlSelect2">Our Customers</label>
-        <select multiple class="form-control" name="customerName" id="exampleFormControlSelect2">
-            <?php echo $this->createCustomerObject($this->customers); ?>
-        </select>
+        <div class="dropdown">
+            <label for="exampleFormControlSelect2">Our Customers</label>
+            <select multiple class="form-control" name="customerName" id="exampleFormControlSelect2">
+                <?php echo $this->createCustomerObject($this->customers); ?>
+            </select>
+        </div>
 
         <label for="exampleFormControlSelect2">Our Products</label>
         <select multiple class="form-control" name="productName" id="exampleFormControlSelect2">
             <?php echo $this->createProductsList($this->products); ?>
         </select>
 
-
-
         <input class="btn btn-primary" type="submit" name="submit" value="Submit">
     </form>
 </section>
 <section>
-    <p> <?php if(isset($customer_selected)){echo $this->getChosenOne($customer_selected)->getName();}  ?></p>
-    <div name="description">Product name: <?php if(isset($product_selected)){ echo $this->getChosenProduct($product_selected)->getName();} ?> </div>
-    <div name="description">Product ID: <?php if(isset($product_selected)){  echo $this->getChosenProduct($product_selected)->getId();} ?> </div>
-    <div name="description">Product description: <?php if(isset($product_selected)){  echo $this->getChosenProduct($product_selected)->getDescription();} ?> </div>
-    <div name="price">Price: <?php if(isset($product_selected)){  echo  $this->getChosenProduct($product_selected)->getPrice();} ?> </div>
+    <p> <?php if (isset($customer_selected)) {
+            echo $this->getChosenOne($customer_selected)->getName();
+        } ?></p>
+    <div name="description">Product name: <?php if (isset($product_selected)) {
+            echo $this->getChosenProduct($product_selected)->getName();
+        } ?> </div>
+    <div name="description">Product ID: <?php if (isset($product_selected)) {
+            echo $this->getChosenProduct($product_selected)->getId();
+        } ?> </div>
+    <div name="description">Product description: <?php if (isset($product_selected)) {
+            echo $this->getChosenProduct($product_selected)->getDescription();
+        } ?> </div>
+    <div name="price">Price: <?php if (isset($product_selected)) {
+            echo $this->getChosenProduct($product_selected)->getPrice();
+        } ?> </div>
 </section>
 <?php require 'includes/footer.php' ?>
 
